@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paracelsus Apotheke – Hochheim</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { color: #333; background-color: #f9f9f9; line-height: 1.6; }
+        header { background-color: #007a52; color: white; padding: 20px 0; position: sticky; top: 0; z-index: 1000; }
+        .header-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .logo h1 { font-size: 26px; }
+        .logo p { font-size: 13px; opacity: 0.9; }
+        nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: 600; font-size: 14px; }
+        nav a:hover { text-decoration: underline; }
+        .hero { background-color: #e8f5e9; padding: 40px 20px; text-align: center; border-bottom: 1px solid #c8e6c9; }
+        .hero h2 { color: #007a52; margin-bottom: 10px; font-size: 28px; }
+        .hero p { max-width: 700px; margin: 0 auto 20px; color: #444; }
+        .order-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px; }
+        .btn { background-color: #d32f2f; color: white; padding: 10px 18px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px; }
+        .btn-green { background-color: #007a52; }
+        .btn:hover { opacity: 0.9; }
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid #007a52; }
+        .card h3 { color: #007a52; margin-bottom: 15px; border-bottom: 2px solid #e8f5e9; padding-bottom: 8px; }
+        .card ul { list-style: none; }
+        .card ul li { margin-bottom: 8px; padding-left: 20px; position: relative; }
+        .card ul li::before { content: "✓"; position: absolute; left: 0; color: #007a52; font-weight: bold; }
+        .legal-section { background: white; padding: 30px; border-radius: 8px; margin-top: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .legal-section h2 { color: #007a52; margin-bottom: 15px; }
+        .legal-section h3 { margin-top: 15px; margin-bottom: 5px; font-size: 16px; }
+        .legal-section p, .legal-section div { font-size: 14px; color: #555; margin-bottom: 10px; white-space: pre-line; }
+        footer { background-color: #222; color: white; text-align: center; padding: 20px; margin-top: 40px; font-size: 13px; }
+        footer a { color: #81c784; text-decoration: none; }
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; text-align: center; }
+            nav { margin-top: 15px; }
+            nav a { display: inline-block; margin: 5px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Paracelsus Apotheke</h1>
+                <p>Weiherstraße 25, 65239 Hochheim</p>
+            </div>
+            <nav>
+                <a href="#about">Über uns</a>
+                <a href="#services">Leistungen</a>
+                <a href="#order">Vorbestellung</a>
+                <a href="#hours">Öffnungszeiten</a>
+                <a href="#impressum">Impressum</a>
+                <a href="#datenschutz">Datenschutz</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h2>Herzlich willkommen in der Paracelsus Apotheke!</h2>
+        <p>Wir freuen uns, Euch mit fachkundiger Beratung und einem persönlichen Service zur Seite zu stehen – für Eure Gesundheit und ein besseres Wohlbefinden.</p>
+        <p><strong>Sprachen:</strong> Wir sprechen Englisch, Französisch, Polnisch, Russisch und echtes Hochemer Platt!</p>
+        
+        <div class="order-buttons" id="order">
+            <a href="tel:061463377" class="btn">Tel: 06146 3377</a>
+            <a href="https://wa.me/4915227574793" class="btn btn-green" target="_blank">WhatsApp Vorbestellung</a>
+            <a href="http://www.paracelsusapo24.de" class="btn btn-green" target="_blank">Mea Shop</a>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <!-- Geschichte & Inhaber -->
+        <div class="card" id="about" style="margin-bottom: 30px;">
+            <h3>Über uns & Geschichte</h3>
+            <p>Im November 1973 wurde die Paracelsus Apotheke von Dr. Curt Klega gegründet. Mit viel Engagement und Fachwissen haben er und seine Frau Fränzi einen Ort geschaffen, an dem die Menschen zuverlässig versorgt wurden. Im Jahr 2005 übernahm Danny Müller die Apotheke.</p>
+            <br>
+            <p>Seit März 2026 wird die Paracelsus Apotheke von <strong>Tobias Schorge</strong> geführt, der die Geschichte der Apotheke fortsetzt und die bewährte Verbindung aus Erfahrung, Qualität und persönlicher Betreuung erhält.</p>
+            <br>
+            <p><em>Euer Tobias Schorge und das Team der Paracelsus Apotheke</em></p>
+        </div>
+
+        <div class="grid">
+            <!-- Leistungen -->
+            <div class="card" id="services">
+                <h3>Unsere Leistungen</h3>
+                <ul>
+                    <li>Blutdruckmessungen & Diabetesberatungen</li>
+                    <li>Verleih von Babywaagen, elektrischen Milchpumpen & Inhalationsgeräten</li>
+                    <li>Gewichtskontrolle, Ernährungs- & Kosmetikberatung</li>
+                    <li>Beratung zu Reiseapotheke & Reiseimpfungen</li>
+                    <li>Bestellung von Euroarznei</li>
+                    <li>Spezialisten für Homöopathie für Mensch & Tier</li>
+                    <li>Messung von Kompressionsstrümpfen (passgenau)</li>
+                    <li>Täglicher Medikamenten-Zustelldienst (nach Hochheim & Massenheim)</li>
+                    <li>Kreative Geschenkgutscheine</li>
+                    <li>Vorteile durch unsere Kundenkarte</li>
+                </ul>
+            </div>
+
+            <!-- Öffnungszeiten & Kontakt -->
+            <div class="card" id="hours">
+                <h3>Öffnungszeiten</h3>
+                <p><strong>Montag – Samstag:</strong><br>08:00 – 13:00 Uhr<br>14:30 – 18:30 Uhr</p>
+                <p style="font-size: 13px; color: #666; margin-top: 5px;">*(außer Mittwoch- und Samstagnachmittag geschlossen)</p>
+                <br>
+                <h3>Kontakt</h3>
+                <p><strong>Telefon:</strong> 06146 3377</p>
+                <p><strong>Telefax:</strong> 06146 7612</p>
+                <p><strong>E-Mail:</strong> mail@ApothekeParacelsus.de</p>
+                <p><strong>Social Media:</strong> <a href="https://www.facebook.com/share/1G8EhMAEmH/" target="_blank">Facebook</a> | <a href="https://www.instagram.com/paracelsusapothekehochheim" target="_blank">Instagram</a></p>
+            </div>
+        </div>
+
+        <!-- Impressum -->
+        <div class="legal-section" id="impressum">
+            <h2>Impressum</h2>
+            <p><strong>Anschrift:</strong><br>
+            Paracelsus Apotheke<br>
+            Weiherstr. 25<br>
+            65239 Hochheim</p>
+
+            <p><strong>Inhaber:</strong> Apotheker Tobias Schorge</p>
+
+            <p><strong>Kontakt:</strong><br>
+            Telefon: 06146 3377 | Telefax: 06146 7612<br>
+            E-Mail: mail@ApothekeParacelsus.de | Web: www.ApothekeParacelsus.de</p>
+
+            <p><strong>Handelsregister:</strong> Amtsgericht Wiesbaden HRA 6747<br>
+            <strong>Umsatzsteuer-ID:</strong> DE237917800</p>
+
+            <p><strong>Zuständige Kammer:</strong><br>
+            Landesapothekerkammer Hessen, Am Leonhardsbrunn 5, 60487 Frankfurt am Main</p>
+
+            <p><strong>Zuständige Aufsichtsbehörde:</strong><br>
+            Hessisches Sozialministerium, Dostojewskistraße 4, 65187 Wiesbaden</p>
+
+            <p><strong>Gesetzliche Berufsbezeichnung:</strong> Apotheker (verliehen in der Bundesrepublik Deutschland)<br>
+            <strong>Berufsrechtliche Regelungen:</strong> Berufsordnung für Apothekerinnen und Apotheker (zugänglich bei der Apothekerkammer Hessen)</p>
+            
+            <h3>1. Haftungsbeschränkung</h3>
+            <p>Die Inhalte des Internetauftritts wurden mit größtmöglicher Sorgfalt und nach bestem Gewissen erstellt. Dennoch übernimmt der Anbieter dieser Webseite keine Gewähr für die Aktualität, Vollständigkeit und Richtigkeit der bereitgestellten Seiten und Inhalte.</p>
+            
+            <h3>2. Externe Links</h3>
+            <p>Die Webseite enthält sog. „externe Links“ (Verlinkungen) zu anderen Webseiten, auf deren Inhalt der Anbieter der Webseite keinen Einfluss hat. Aus diesem Grund kann der Anbieter für diese Inhalte auch keine Gewähr übernehmen.</p>
+            
+            <h3>3. Urheberrecht/Leistungsschutzrecht</h3>
+            <p>Die auf dieser Webseite veröffentlichten Inhalte, Werke und bereitgestellten Informationen unterliegen dem deutschen Urheberrecht und Leistungsschutzrecht.</p>
+        </div>
+
+        <!-- Datenschutz -->
+        <div class="legal-section" id="datenschutz">
+            <h2>Datenschutzerklärung</h2>
+            
+            <h3>I. Name und Anschrift des Verantwortlichen</h3>
+            <p>Tobias Schorge e.K. | Paracelsus Apotheke<br>
+            Weiherstr. 25, 65239 Hochheim<br>
+            mail@apothekeparacelsus.de | Tel: 06146 3377</p>
+
+            <h3>II. Datenschutzbeauftragter</h3>
+            <p>Es besteht nach Art. 37 DS-GVO und § 38 BDSG keine Pflicht zur Bestellung eines Datenschutzbeauftragten.</p>
+
+            <h3>III. Allgemeines zur Datenverarbeitung</h3>
+            <p>Wir erheben und verwenden personenbezogene Daten unserer Kunden/Patienten, insbesondere gesundheitsbezogene Daten, grundsätzlich nur, soweit dies im Rahmen unserer Tätigkeit als Apotheke erforderlich ist.</p>
+
+            <h3>IV. Rechte der Betroffenen</h3>
+            <p>Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie Widerspruch (Art. 21 DSGVO).</p>
+
+            <h3>V. Beschwerderecht bei der Aufsichtsbehörde</h3>
+            <p>Der Hessische Datenschutzbeauftragte<br>
+            Postfach 3163, 65021 Wiesbaden<br>
+            E-Mail: Poststelle@datenschutz.hessen.de | Tel: +49 611 1408 - 0</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Paracelsus Apotheke Hochheim. Alle Rechte vorbehalten. | <a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a></p>
+    </footer>
+
+</body>
+</html>
