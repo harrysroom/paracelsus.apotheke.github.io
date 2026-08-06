@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paracelsus Apotheke</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #1a332d; /* Original Dunkelgrün aus Screenshot */
+            color: #f2efe9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            padding: 20px 16px 40px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* Top Bar Header */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #f2efe9;
+        }
+
+        .brand-cross {
+            color: #d99b38; /* Gold/Gelb Cross */
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .phone-badge {
+            background-color: #122420;
+            color: #f2efe9;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Subheader */
+        .location-sub {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: rgba(242, 239, 233, 0.6);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        /* Hero Heading */
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            color: #d99b38; /* Goldener Akzent */
+        }
+
+        .hero-desc {
+            font-size: 15px;
+            line-height: 1.5;
+            color: rgba(242, 239, 233, 0.85);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .btn-primary {
+            background-color: #d99b38;
+            color: #1a332d;
+            font-weight: 700;
+            padding: 16px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #f2efe9;
+            border: 1px solid rgba(242, 239, 233, 0.4);
+            font-weight: 600;
+            padding: 16px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* --- LIVE STATUS WIDGET (1:1 EXAKT WIE SCREENSHOT) --- */
+        .status-card {
+            background-color: #142823;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 20px;
+        }
+
+        .status-pill {
+            background-color: #f2efe9;
+            color: #1a332d;
+            border-radius: 40px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 25px;
+        }
+
+        .status-icon-ring {
+            width: 44px;
+            height: 44px;
+            background-color: #1e3630;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .status-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #d9534f; /* Rot für Geschlossen */
+        }
+
+        .status-open .status-dot {
+            background-color: #25D366; /* Grün für Geöffnet */
+        }
+
+        .status-text-main {
+            font-size: 17px;
+            font-weight: 700;
+            color: #122420;
+            line-height: 1.2;
+        }
+
+        .status-text-sub {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 3px;
+        }
+
+        .time-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Space Mono', monospace;
+            margin-bottom: 15px;
+        }
+
+        .time-label {
+            font-size: 13px;
+            color: rgba(242, 239, 233, 0.7);
+        }
+
+        .time-value {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .card-divider {
+            border-top: 1px dashed rgba(242, 239, 233, 0.2);
+            margin: 15px 0;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+        }
+
+        .hours-label {
+            color: rgba(242, 239, 233, 0.7);
+        }
+
+        .hours-value {
+            color: #f2efe9;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="top-header">
+        <div class="brand">
+            <span class="brand-cross">+</span> Paracelsus Apotheke
+        </div>
+        <a href="tel:061463377" class="phone-badge">06146 3377</a>
+    </div>
+
+    <div class="location-sub">WEIHERSTR. 25 · HOCHHEIM AM MAIN</div>
+
+    <!-- Hero Section -->
+    <h1 class="hero-title">Gesundheit, <br><span>persönlich</span><br> seit 1973.</h1>
+
+    <p class="hero-desc">
+        Die Paracelsus Apotheke berät, versorgt und beliefert Hochheim und Massenheim – mit Zeit für Ihre Fragen und einem Team, das Sie beim Namen kennt.
+    </p>
+
+    <!-- Order Buttons -->
+    <div class="btn-group">
+        <a href="tel:061463377" class="btn-primary">Rezept vorbestellen</a>
+        <a href="#hours" class="btn-secondary">Öffnungszeiten & Anfahrt</a>
+    </div>
+
+    <!-- LIVE STATUS WIDGET (Echtzeit-Uhr) -->
+    <div class="status-card" id="status-card">
+        <div class="status-pill">
+            <div class="status-icon-ring">
+                <div class="status-dot" id="status-dot"></div>
+            </div>
+            <div>
+                <div class="status-text-main" id="status-title">Aktuell geschlossen</div>
+                <div class="status-text-sub" id="status-sub">Lädt...</div>
+            </div>
+        </div>
+
+        <div class="time-row">
+            <span class="time-label">Aktuelle Uhrzeit</span>
+            <span class="time-value" id="live-clock">--:--:--</span>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="hours-row">
+            <span class="hours-label">Heute</span>
+            <span class="hours-value" id="today-hours">08:00-13:00 & 14:30-18:30</span>
+        </div>
+    </div>
+
+    <script>
+        const days = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+
+        function updateLiveStatus() {
+            const now = new Date();
+            const day = now.getDay();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const currentMinutes = hours * 60 + minutes;
+
+            // 1. ECHTE UHRZEIT SCHREIBEN (Sekunden laufen live)
+            const hStr = String(hours).padStart(2, '0');
+            const mStr = String(minutes).padStart(2, '0');
+            const sStr = String(seconds).padStart(2, '0');
+            document.getElementById('live-clock').textContent = `${hStr}:${mStr}:${sStr}`;
+
+            // Öffnungszeiten definieren (in Minuten ab 00:00)
+            const openMorning = 8 * 60;          // 08:00 (480 min)
+            const closeMorning = 13 * 60;        // 13:00 (780 min)
+            const openAfternoon = 14 * 60 + 30;  // 14:30 (870 min)
+            const closeAfternoon = 18 * 60 + 30; // 18:30 (1110 min)
+
+            let isOpen = false;
+            let subText = "";
+            let todayText = "";
+
+            // Heutige Öffnungszeiten für Zeile unten
+            if (day >= 1 && day <= 5 && day !== 3) { // Mo, Di, Do, Fr
+                todayText = "08:00-13:00 & 14:30-18:30";
+            } else if (day === 3 || day === 6) { // Mi, Sa
+                todayText = "08:00-13:00";
+            } else { // So
+                todayText = "Geschlossen";
+            }
+            document.getElementById('today-hours').textContent = todayText;
+
+            // Status ermitteln
+            if (day >= 1 && day <= 5 && day !== 3) { // Mo, Di, Do, Fr
+                if (currentMinutes >= openMorning && currentMinutes < closeMorning) {
+                    isOpen = true;
+                    subText = "Schließt um 13:00 Uhr";
+                } else if (currentMinutes >= closeMorning && currentMinutes < openAfternoon) {
+                    isOpen = false;
+                    subText = "Öffnet heute um 14:30 Uhr";
+                } else if (currentMinutes >= openAfternoon && currentMinutes < closeAfternoon) {
+                    isOpen = true;
+                    subText = "Schließt um 18:30 Uhr";
+                } else if (currentMinutes < openMorning) {
+                    isOpen = false;
+                    subText = "Öffnet heute um 08:00 Uhr";
+                } else {
+                    isOpen = false;
+                    const nextDayName = (day === 2) ? "Mittwoch" : (day === 5) ? "Samstag" : days[day + 1];
+                    subText = `Öffnet ${nextDayName} um 08:00 Uhr`;
+                }
+            } else if (day === 3 || day === 6) { // Mi, Sa
+                if (currentMinutes >= openMorning && currentMinutes < closeMorning) {
+                    isOpen = true;
+                    subText = "Schließt um 13:00 Uhr";
+                } else if (currentMinutes < openMorning) {
+                    isOpen = false;
+                    subText = "Öffnet heute um 08:00 Uhr";
+                } else {
+                    isOpen = false;
+                    const nextDayName = (day === 3) ? "Donnerstag" : "Montag";
+                    subText = `Öffnet ${nextDayName} um 08:00 Uhr`;
+                }
+            } else { // Sonntag
+                isOpen = false;
+                subText = "Öffnet Montag um 08:00 Uhr";
+            }
+
+            // HTML Elemente aktualisieren
+            const card = document.getElementById('status-card');
+            const title = document.getElementById('status-title');
+            const sub = document.getElementById('status-sub');
+
+            if (isOpen) {
+                card.classList.add('status-open');
+                title.textContent = "Aktuell geöffnet";
+            } else {
+                card.classList.remove('status-open');
+                title.textContent = "Aktuell geschlossen";
+            }
+            sub.textContent = subText;
+        }
+
+        // Live-Funktion sofort ausführen & jede Sekunde erneuern
+        updateLiveStatus();
+        setInterval(updateLiveStatus, 1000);
+    </script>
+</body>
+</html>
