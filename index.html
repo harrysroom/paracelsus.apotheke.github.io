@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Öffnungszeiten Widget</title>
+  <style>
+    :root {
+      --bg-card: #0d1b2a;
+      --card-inner: #1b263b;
+      --pill-bg: #f1f3f5;
+      --text-main: #ffffff;
+      --text-sub: #a0aec0;
+      --accent-blue: #38bdf8;
+      --border-dash: #334155;
+      --status-open: #22c55e;
+      --status-closed: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #050b14;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Container Card */
+    .business-hours-card {
+      background-color: var(--bg-card);
+      border-radius: 20px;
+      padding: 24px;
+      width: 100%;
+      max-width: 440px;
+      color: var(--text-main);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    /* Top Status Badge Pill */
+    .status-pill {
+      background-color: var(--pill-bg);
+      border-radius: 40px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .status-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: var(--status-closed);
+      flex-shrink: 0;
+    }
+
+    .status-dot.open {
+      background-color: var(--status-open);
+      box-shadow: 0 0 10px var(--status-open);
+    }
+
+    .status-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .status-title {
+      color: #0f172a;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .status-subtitle {
+      color: #64748b;
+      font-size: 0.88rem;
+      margin-top: 2px;
+      font-family: monospace;
+    }
+
+    /* Live Time Row */
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0 16px 0;
+      border-bottom: 1px dashed var(--border-dash);
+    }
+
+    .time-label {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+    }
+
+    .time-digital {
+      color: var(--accent-blue);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-family: monospace;
+    }
+
+    /* Hours Section */
+    .hours-section {
+      margin-top: 16px;
+    }
+
+    .hours-header {
+      color: var(--text-sub);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 12px;
+    }
+
+    .hours-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hours-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+    }
+
+    .hours-day {
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .hours-time {
+      color: #cbd5e1;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="business-hours-card">
+    <!-- Live Open/Closed Status -->
+    <div class="status-pill">
+      <div class="status-dot" id="statusDot"></div>
+      <div class="status-info">
+        <span class="status-title" id="statusTitle">Aktuell geschlossen</span>
+        <span class="status-subtitle" id="statusSubtitle">Öffnet...</span>
+      </div>
+    </div>
+
+    <!-- Live Digital Clock -->
+    <div class="time-row">
+      <span class="time-label">Aktuelle Uhrzeit</span>
+      <span class="time-digital" id="liveClock">00:00:00</span>
+    </div>
+
+    <!-- Opening Hours Overview -->
+    <div class="hours-section">
+      <div class="hours-header">Öffnungszeiten</div>
+      <div class="hours-list">
+        <div class="hours-item">
+          <span class="hours-day">Mo, Di, Do, Fr:</span>
+          <span class="hours-time">08:00–13:00 | 14:30–18:30 Uhr</span>
+        </div>
+        <div class="hours-item">
+          <span class="hours-day">Mittwoch:</span>
+          <span class="hours-time">08:00–13:00 Uhr</span>
+        </div>
+        <div class="hours-item">
+          <span class="hours-day">Samstag:</span>
+          <span class="hours-time">08:00–13:00 Uhr</span>
+        </div>
+        <div class="hours-item">
+          <span class="hours-day">Sonn- & Feiertage:</span>
+          <span class="hours-time">Geschlossen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Öffnungszeiten-Konfiguration
+    const schedule = {
+      1: [[8, 0, 13, 0], [14, 30, 18, 30]], // Mo
+      2: [[8, 0, 13, 0], [14, 30, 18, 30]], // Di
+      3: [[8, 0, 13, 0]],                  // Mi
+      4: [[8, 0, 13, 0], [14, 30, 18, 30]], // Do
+      5: [[8, 0, 13, 0], [14, 30, 18, 30]], // Fr
+      6: [[8, 0, 13, 0]],                  // Sa
+      0: []                                // So
+    };
+
+    const dayNames = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+
+    function pad(n) {
+      return n < 10 ? '0' + n : n;
+    }
+
+    function updateWidget() {
+      const now = new Date();
+      
+      // 1. Live Uhrzeit aktualisieren
+      const h = pad(now.getHours());
+      const m = pad(now.getMinutes());
+      const s = pad(now.getSeconds());
+      document.getElementById('liveClock').textContent = `${h}:${m}:${s}`;
+
+      // 2. Öffnungsstatus berechnen
+      const currentDay = now.getDay();
+      const currentMin = now.getHours() * 60 + now.getMinutes();
+      const todaySlots = schedule[currentDay];
+
+      let isOpen = false;
+      let nextActionText = "";
+
+      // Prüfen, ob jetzt geöffnet ist
+      for (let slot of todaySlots) {
+        const startMin = slot[0] * 60 + slot[1];
+        const endMin = slot[2] * 60 + slot[3];
+
+        if (currentMin >= startMin && currentMin < endMin) {
+          isOpen = true;
+          nextActionText = `Schließt um ${pad(slot[2])}:${pad(slot[3])} Uhr`;
+          break;
+        }
+      }
+
+      // Wenn geschlossen, nächste Öffnungszeit ermitteln
+      if (!isOpen) {
+        let foundNext = false;
+        
+        // Spätere Slots am selben Tag
+        for (let slot of todaySlots) {
+          const startMin = slot[0] * 60 + slot[1];
+          if (currentMin < startMin) {
+            nextActionText = `Öffnet heute um ${pad(slot[0])}:${pad(slot[1])} Uhr`;
+            foundNext = true;
+            break;
+          }
+        }
+
+        // Kommende Tage prüfen
+        if (!foundNext) {
+          for (let d = 1; d <= 7; d++) {
+            const nextDayIndex = (currentDay + d) % 7;
+            const nextSlots = schedule[nextDayIndex];
+            if (nextSlots.length > 0) {
+              const firstSlot = nextSlots[0];
+              const dayLabel = d === 1 ? "morgen" : dayNames[nextDayIndex];
+              nextActionText = `Öffnet ${dayLabel} um ${pad(firstSlot[0])}:${pad(firstSlot[1])} Uhr`;
+              break;
+            }
+          }
+        }
+      }
+
+      // DOM anpassen
+      const dot = document.getElementById('statusDot');
+      const title = document.getElementById('statusTitle');
+      const subtitle = document.getElementById('statusSubtitle');
+
+      if (isOpen) {
+        dot.classList.add('open');
+        title.textContent = "Aktuell geöffnet";
+      } else {
+        dot.classList.remove('open');
+        title.textContent = "Aktuell geschlossen";
+      }
+      subtitle.textContent = nextActionText;
+    }
+
+    // Interval für sekündliches Update
+    setInterval(updateWidget, 1000);
+    updateWidget();
+  </script>
+</body>
+</html>
