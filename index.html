@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paracelsus Apotheke – Hochheim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #028090;
+            --primary-dark: #005f73;
+            --accent: #e63946;
+            --accent-hover: #c1121f;
+            --whatsapp: #25D366;
+            --whatsapp-dark: #128C7E;
+            --bg-light: #f4f7f6;
+            --text-main: #2b2d42;
+            --text-muted: #6c757d;
+            --card-bg: #ffffff;
+            --radius: 16px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* Top Bar Info */
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 13px;
+            padding: 8px 20px;
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            color: var(--primary-dark);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo p {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            background-color: #eef7f6;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e0f2f1 0%, #f4f7f6 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .hero h2 {
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 0 auto 15px;
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .language-tag {
+            display: inline-block;
+            background: white;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        /* Buttons Style */
+        .order-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.25);
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(230, 57, 70, 0.35);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--whatsapp-dark);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-shop {
+            background-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(2, 128, 144, 0.25);
+        }
+
+        .btn-shop:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 6px 16px rgba(2, 128, 144, 0.35);
+        }
+
+        /* Echte Social Media Buttons mit Logo */
+        .social-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .btn-social {
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-social svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .btn-social:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-facebook {
+            background-color: #1877F2;
+            box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
+        }
+
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            box-shadow: 0 4px 12px rgba(220, 39, 67, 0.3);
+        }
+
+        /* Layout Grid */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        .card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-bottom: 2px solid #f0f4f4;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card ul li {
+            margin-bottom: 10px;
+            padding-left: 24px;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Live Status Badge Styling */
+        .status-badge {
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-open {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+
+        .status-closed {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-open .status-dot { background-color: #2e7d32; }
+        .status-closed .status-dot { background-color: #c62828; }
+
+        /* Hours Table Style */
+        .hours-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            padding: 6px 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+
+        .hours-day {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .hours-time {
+            color: var(--text-muted);
+        }
+
+        /* NEUE Moderne Google-Bewertungs-Card */
+        .review-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 35px 25px;
+            box-shadow: 0 10px 30px rgba(2, 128, 144, 0.08);
+            border: 1px solid #e2ece9;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .review-stars-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #fff8e7;
+            border: 1px solid #ffe0b2;
+            padding: 6px 16px;
+            border-radius: 30px;
+            color: #f59e0b;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .review-card h3 {
+            color: var(--primary-dark);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .review-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            max-width: 500px;
+            margin: 0 auto 22px auto;
+        }
+
+        .btn-google {
+            background-color: #4285F4;
+            color: white;
+            padding: 12px 26px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 14px rgba(66, 133, 244, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-google:hover {
+            background-color: #3367d6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(66, 133, 244, 0.4);
+        }
+
+        .btn-google svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        /* Legal Accordions / Sections */
+        .legal-section {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: var(--radius);
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .legal-section h2 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            font-size: 22px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        .legal-section h3 {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: var(--text-main);
+        }
+
+        .legal-section p, .legal-section div {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1c23;
+            color: #a0a5b5;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #4ecdc4;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            nav {
+                justify-content: center;
+            }
+            .hero h2 { font-size: 26px; }
+            .social-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        📍 Weiherstraße 25, 65239 Hochheim am Main | 📞 Tel: 06146 3377
+    </div>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Paracelsus Apotheke</h1>
+                <p>Ihre Gesundheit in guten Händen</p>
+            </div>
+            <nav>
+                <a href="#about">Über uns</a>
+                <a href="#services">Leistungen</a>
+                <a href="#hours">Öffnungszeiten</a>
+                <a href="#bewertung">Bewertung</a>
+                <a href="#impressum">Impressum</a>
+                <a href="#datenschutz">Datenschutz</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h2>Herzlich willkommen in der Paracelsus Apotheke</h2>
+        <p>Wir stehen Ihnen mit fachkundiger Beratung und persönlichem Service zur Seite – für Ihre Gesundheit und Ihr Wohlbefinden.</p>
+        
+        <div class="language-tag">
+            🗣️ Wir sprechen: Englisch, Französisch, Polnisch, Russisch & Hochemer Platt!
+        </div>
+        
+        <div class="order-buttons" id="order">
+            <a href="tel:061463377" class="btn">
+                📞 Telefon: 06146 3377
+            </a>
+            <a href="https://wa.me/4915227574793" class="btn btn-whatsapp" target="_blank">
+                💬 WhatsApp Vorbestellung
+            </a>
+            <a href="http://www.paracelsusapo24.de" class="btn btn-shop" target="_blank">
+                🛒 Mea Online-Shop
+            </a>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <!-- Geschichte & Inhaber -->
+        <div class="card" id="about" style="margin-bottom: 30px;">
+            <h3>📖 Über uns & Geschichte</h3>
+            <p>Im November 1973 wurde die Paracelsus Apotheke von Dr. Curt Klega gegründet. Mit viel Engagement und Fachwissen haben er und seine Frau Fränzi einen Ort geschaffen, an dem die Menschen zuverlässig versorgt wurden. Im Jahr 2005 übernahm Danny Müller die Apotheke.</p>
+            <br>
+            <p>Seit März 2026 wird die Paracelsus Apotheke von <strong>Tobias Schorge</strong> geführt, der die Geschichte der Apotheke fortsetzt und die bewährte Verbindung aus Erfahrung, Qualität und persönlicher Betreuung erhält.</p>
+            <br>
+            <p><em>Euer Tobias Schorge und das Team der Paracelsus Apotheke</em></p>
+        </div>
+
+        <div class="grid">
+            <!-- Leistungen -->
+            <div class="card" id="services">
+                <h3>💊 Unsere Leistungen</h3>
+                <ul>
+                    <li>Blutdruckmessungen & Diabetesberatungen</li>
+                    <li>Verleih von Babywaagen, elektrischen Milchpumpen & Inhalationsgeräten</li>
+                    <li>Gewichtskontrolle, Ernährungs- & Kosmetikberatung</li>
+                    <li>Beratung zu Reiseapotheke & Reiseimpfungen</li>
+                    <li>Bestellung von Euroarznei</li>
+                    <li>Spezialisten für Homöopathie für Mensch & Tier</li>
+                    <li>Messung von Kompressionsstrümpfen (passgenau)</li>
+                    <li>Täglicher Medikamenten-Zustelldienst (Hochheim & Massenheim)</li>
+                    <li>Kreative Geschenkgutscheine</li>
+                    <li>Vorteile durch unsere Kundenkarte</li>
+                </ul>
+            </div>
+
+            <!-- Öffnungszeiten & Kontakt -->
+            <div class="card" id="hours">
+                <h3>
+                    <span>⏰ Öffnungszeiten</span>
+                    <span id="live-status" class="status-badge"></span>
+                </h3>
+                
+                <div class="hours-list">
+                    <div class="hours-row">
+                        <span class="hours-day">Mo, Di, Do, Fr:</span>
+                        <span class="hours-time">08:00–13:00 Uhr | 14:30–18:30 Uhr</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Mittwoch:</span>
+                        <span class="hours-time">08:00–13:00 Uhr (Nachmittags zu)</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Samstag:</span>
+                        <span class="hours-time">08:00–13:00 Uhr (Nachmittags zu)</span>
+                    </div>
+                    <div class="hours-row">
+                        <span class="hours-day">Sonn- & Feiertage:</span>
+                        <span class="hours-time">Geschlossen</span>
+                    </div>
+                </div>
+
+                <br>
+                <h3>📞 Kontakt</h3>
+                <p><strong>Telefon:</strong> 06146 3377</p>
+                <p><strong>Telefax:</strong> 06146 7612</p>
+                <p><strong>E-Mail:</strong> mail@ApothekeParacelsus.de</p>
+                <br>
+                <p><strong>Folgen Sie uns:</strong></p>
+                <div class="social-buttons">
+                    <!-- Facebook Logo -->
+                    <a href="https://www.facebook.com/share/1G8EhMAEmH/" target="_blank" class="btn-social btn-facebook">
+                        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        Facebook
+                    </a>
+                    <!-- Instagram Logo -->
+                    <a href="https://www.instagram.com/paracelsusapothekehochheim" target="_blank" class="btn-social btn-instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Neuer Moderner Google-Bewertungs-Bereich -->
+        <div class="review-card" id="bewertung">
+            <div class="review-stars-badge">
+                ★ ★ ★ ★ ★ <span>5.0</span>
+            </div>
+            <h3>Ihre Meinung ist uns wichtig!</h3>
+            <p>Waren Sie zufrieden mit unserer Beratung oder unserem Service? Helfen Sie uns und anderen Patienten mit Ihrer Bewertung auf Google.</p>
+            <a href="https://search.google.com/local/writereview?placeid=ChIJ3172P0A3vkcR03K6G5yN2eY" target="_blank" class="btn-google">
+                <svg viewBox="0 0 24 24"><path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.545,6.477,2.545,12s4.476,10,10,10c5.765,0,9.754-4.056,9.754-9.927c0-0.695-0.076-1.371-0.198-2.034H12.545z"/></svg>
+                Jetzt auf Google bewerten
+            </a>
+        </div>
+
+        <!-- Impressum -->
+        <div class="legal-section" id="impressum">
+            <h2>Impressum</h2>
+            <p><strong>Anschrift:</strong><br>
+            Paracelsus Apotheke<br>
+            Weiherstr. 25<br>
+            65239 Hochheim</p>
+
+            <p><strong>Inhaber:</strong> Apotheker Tobias Schorge</p>
+
+            <p><strong>Kontakt:</strong><br>
+            Telefon: 06146 3377 | Telefax: 06146 7612<br>
+            E-Mail: mail@ApothekeParacelsus.de | Web: www.ApothekeParacelsus.de</p>
+
+            <p><strong>Handelsregister:</strong> Amtsgericht Wiesbaden HRA 6747<br>
+            <strong>Umsatzsteuer-ID:</strong> DE237917800</p>
+
+            <p><strong>Zuständige Kammer:</strong><br>
+            Landesapothekerkammer Hessen, Am Leonhardsbrunn 5, 60487 Frankfurt am Main</p>
+
+            <p><strong>Zuständige Aufsichtsbehörde:</strong><br>
+            Hessisches Sozialministerium, Dostojewskistraße 4, 65187 Wiesbaden</p>
+
+            <p><strong>Gesetzliche Berufsbezeichnung:</strong> Apotheker (verliehen in der Bundesrepublik Deutschland)<br>
+            <strong>Berufsrechtliche Regelungen:</strong> Berufsordnung für Apothekerinnen und Apotheker (zugänglich bei der Apothekerkammer Hessen)</p>
+            
+            <h3>1. Haftungsbeschränkung</h3>
+            <p>Die Inhalte des Internetauftritts wurden mit größtmöglicher Sorgfalt und nach bestem Gewissen erstellt. Dennoch übernimmt der Anbieter dieser Webseite keine Gewähr für die Aktualität, Vollständigkeit und Richtigkeit der bereitgestellten Seiten und Inhalte.</p>
+            
+            <h3>2. Externe Links</h3>
+            <p>Die Webseite enthält sog. „externe Links“ (Verlinkungen) zu anderen Webseiten, auf deren Inhalt der Anbieter der Webseite keinen Einfluss hat. Aus diesem Grund kann der Anbieter für diese Inhalte auch keine Gewähr übernehmen.</p>
+            
+            <h3>3. Urheberrecht/Leistungsschutzrecht</h3>
+            <p>Die auf dieser Webseite veröffentlichten Inhalte, Werke und bereitgestellten Informationen unterliegen dem deutschen Urheberrecht und Leistungsschutzrecht.</p>
+        </div>
+
+        <!-- Datenschutz -->
+        <div class="legal-section" id="datenschutz">
+            <h2>Datenschutzerklärung</h2>
+            
+            <h3>I. Name und Anschrift des Verantwortlichen</h3>
+            <p>Tobias Schorge e.K. | Paracelsus Apotheke<br>
+            Weiherstr. 25, 65239 Hochheim<br>
+            mail@apothekeparacelsus.de | Tel: 06146 3377</p>
+
+            <h3>II. Datenschutzbeauftragter</h3>
+            <p>Es besteht nach Art. 37 DS-GVO und § 38 BDSG keine Pflicht zur Bestellung eines Datenschutzbeauftragten.</p>
+
+            <h3>III. Allgemeines zur Datenverarbeitung</h3>
+            <p>Wir erheben und verwenden personenbezogene Daten unserer Kunden/Patienten, insbesondere gesundheitsbezogene Daten, grundsätzlich nur, soweit dies im Rahmen unserer Tätigkeit als Apotheke erforderlich ist.</p>
+
+            <h3>IV. Rechte der Betroffenen</h3>
+            <p>Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie Widerspruch (Art. 21 DSGVO).</p>
+
+            <h3>V. Beschwerderecht bei der Aufsichtsbehörde</h3>
+            <p>Der Hessische Datenschutzbeauftragte<br>
+            Postfach 3163, 65021 Wiesbaden<br>
+            E-Mail: Poststelle@datenschutz.hessen.de | Tel: +49 611 1408 - 0</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Paracelsus Apotheke Hochheim. Alle Rechte vorbehalten. | <a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a></p>
+    </footer>
+
+    <!-- Script für die automatische Öffnungszeiten-Anzeige -->
+    <script>
+        function checkOpeningStatus() {
+            const now = new Date();
+            const day = now.getDay();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const currentTime = hours * 60 + minutes;
+
+            const morningOpen = 8 * 60;       
+            const morningClose = 13 * 60;     
+            const afternoonOpen = 14 * 60 + 30; 
+            const afternoonClose = 18 * 60 + 30; 
+
+            let isOpen = false;
+
+            if (day >= 1 && day <= 5) { 
+                if (currentTime >= morningOpen && currentTime < morningClose) {
+                    isOpen = true;
+                }
+                if (day !== 3 && currentTime >= afternoonOpen && currentTime < afternoonClose) {
+                    isOpen = true;
+                }
+            } else if (day === 6) { 
+                if (currentTime >= morningOpen && currentTime < morningClose) {
+                    isOpen = true;
+                }
+            }
+
+            const statusElement = document.getElementById('live-status');
+            if (isOpen) {
+                statusElement.className = 'status-badge status-open';
+                statusElement.innerHTML = '<span class="status-dot"></span> Jetzt geöffnet';
+            } else {
+                statusElement.className = 'status-badge status-closed';
+                statusElement.innerHTML = '<span class="status-dot"></span> Geschlossen';
+            }
+        }
+
+        checkOpeningStatus();
+        setInterval(checkOpeningStatus, 60000);
+    </script>
+
+</body>
+</html>
